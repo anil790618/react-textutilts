@@ -28,8 +28,20 @@ function App() {
      }, 2000);
   }
   // showAlert()
+
+  const removecls = ()=>{
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-light')
+  }
   // const [btntext, setbtntext] = useState("Enable Dark Mode")
-  const toggleMode =()=>{
+  const toggleMode =(cls)=>{
+    // body.addClass
+    console.log(cls);
+    removecls();
+    document.body.classList.add('bg-'+cls)
     if(mode === "light"){
       setmode("dark");
       document.body.style.backgroundColor="#23578b";

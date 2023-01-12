@@ -19,10 +19,18 @@ const handleClcase=()=>{
   settext("")
   props.showAlert("Input box Cleared","success");
 }
+
 const handleExtraSpaces = () => {
   let newText = text.split(/[ ]+/);
   settext(newText.join(" "))
   props.showAlert("Extra Space Removed","success");
+}
+const handleCpycase=()=>{
+  let txt = document.getElementById('inputTxt');
+  txt.select();
+  navigator.clipboard.writeText(txt.value);
+  document.getSelection().removeAllRanges();
+  props.showAlert("Copied to Clipboard!","success")
 }
   return (
     <>
@@ -39,7 +47,7 @@ const handleExtraSpaces = () => {
             <div className="d-grid gap-2 d-md-block">
                 <button className="btn btn-primary mx-2" type="button"  onClick={handleUpcase} disabled={text.length===0} >UpperCase</button>
                 <button className="btn btn-success mx-2" type="button" onClick={handlelocase} disabled={text.length===0} >LoweCase</button> 
-                <button className="btn btn-info mx-2" type="button"  disabled={text.length===0} >Copy</button>
+                <button className="btn btn-info mx-2" type="button" onClick={handleCpycase}  disabled={text.length===0} >Copy</button>
                 <button className="btn btn-secondary mx-2" type="button"  onClick={handleClcase} disabled={text.length===0} >Clear</button>
                 <button className="btn btn-danger mx-2" type="button" onClick={handleExtraSpaces} disabled={text.length===0} >Remove WhiteSpace</button>
                 {/* <button className="btn btn-primary mx-2" type="button">Remove ExtraDots</button> */}
@@ -50,7 +58,7 @@ const handleExtraSpaces = () => {
           <h1>Preview</h1>
           <div className="d-flex  justify-content-between">
           <p>Total words: {text.length}</p>
-          <p>Total characters: {text.split(" ").filter((element)=>{return element.length!=0}).length}</p>
+          <p>Total characters: {text.split(/\s+/).filter((element)=>{return element.length!=0}).length}</p>
           <p>Total time for Reading: {text.split(" ").filter((element)=>{return element.length!=0}).length*0.008}</p>
           </div>
  
