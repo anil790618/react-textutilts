@@ -32,7 +32,7 @@ function App() {
   const toggleMode =()=>{
     if(mode === "light"){
       setmode("dark");
-      document.body.style.backgroundColor="grey";
+      document.body.style.backgroundColor="#23578b";
       showAlert("dark Mode Enabled","success")
       document.title="TextUtils - Dark Mode";
       // setInterval(() => {
@@ -60,7 +60,7 @@ function App() {
            {/* <About/> */}
            <Switch>
           <Route exact  path="/about">
-          <About/>
+          <About mode={mode}/>
           </Route> 
           <Route exact  path="/">
           <TextArea mode={mode} showAlert={showAlert}/>

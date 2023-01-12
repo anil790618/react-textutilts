@@ -37,11 +37,11 @@ const handleExtraSpaces = () => {
        <div className="row  my-3">
         <div className="col-10 m-auto       ">
             <div className="d-grid gap-2 d-md-block">
-                <button className="btn btn-primary mx-2" type="button"  onClick={handleUpcase}>UpperCase</button>
-                <button className="btn btn-success mx-2" type="button" onClick={handlelocase}>LoweCase</button> 
-                <button className="btn btn-info mx-2" type="button"  >Copy</button>
-                <button className="btn btn-secondary mx-2" type="button"  onClick={handleClcase}>Clear</button>
-                <button className="btn btn-danger mx-2" type="button" onClick={handleExtraSpaces} >Remove WhiteSpace</button>
+                <button className="btn btn-primary mx-2" type="button"  onClick={handleUpcase} disabled={text.length===0} >UpperCase</button>
+                <button className="btn btn-success mx-2" type="button" onClick={handlelocase} disabled={text.length===0} >LoweCase</button> 
+                <button className="btn btn-info mx-2" type="button"  disabled={text.length===0} >Copy</button>
+                <button className="btn btn-secondary mx-2" type="button"  onClick={handleClcase} disabled={text.length===0} >Clear</button>
+                <button className="btn btn-danger mx-2" type="button" onClick={handleExtraSpaces} disabled={text.length===0} >Remove WhiteSpace</button>
                 {/* <button className="btn btn-primary mx-2" type="button">Remove ExtraDots</button> */}
             </div>
         </div>
@@ -50,11 +50,11 @@ const handleExtraSpaces = () => {
           <h1>Preview</h1>
           <div className="d-flex  justify-content-between">
           <p>Total words: {text.length}</p>
-          <p>Total characters: {text.split(" ").length}</p>
-          <p>Total time for Reading: {text.split(" ").length*0.008}</p>
+          <p>Total characters: {text.split(" ").filter((element)=>{return element.length!=0}).length}</p>
+          <p>Total time for Reading: {text.split(" ").filter((element)=>{return element.length!=0}).length*0.008}</p>
           </div>
  
-          <textarea className="form-control"  style={{height:'150px'}}   value={text}></textarea> 
+          <textarea className="form-control"  style={{height:'150px'}}   value={text.length>0?text:"No Content to preview"}></textarea> 
         </div>
 
     </div>
