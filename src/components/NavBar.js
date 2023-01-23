@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {  
     Link
   } from "react-router-dom";
-export class NavBar extends Component {
+// export class NavBar extends Component
+const NavBar =()=> {
 
-    render() {
+    // render() {
         return (
             <div> 
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark position-fixed w-100" style={{"z-index":'999',top:0}}>
                     <div className="container-fluid">
                         <Link  className="navbar-brand" to="/">NewsMonkey</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@ export class NavBar extends Component {
                     </nav> 
             </div>
         )
-    }
+    // }
 }
 
 export default NavBar
